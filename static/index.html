@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8">
+                <title>Hello wasm-pack!</title>
+                <style>
+body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+                </style>
+        </head>
+        <body>
+                <form>
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username"><br>
+
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password"><br>
+
+                        <label for="resource">Resource:</label><br>
+                        <input type="text" id="resource" name="resource" value="resource"><br>
+
+                        <label for="toggel">Self-sign:</label>
+                        <input type="checkbox" id="btn-self-sign" name="btn-self-sign"><br>
+
+                        <input type="button" value="Request token" id="btn-request">
+                </form>
+                <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+                <canvas id="game-of-life-canvas"></canvas>
+                <script src="./bootstrap.js"></script>
+        </body>
+</html>

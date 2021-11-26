@@ -1,0 +1,50 @@
+[package]
+name = "atpmd"
+
+version = "0.5.0"
+authors = ["Teodor Dahl Knutsen <teodor-dahl.knutsen@ffi.no>","Tallak Manum <Tallak@manum.no>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = [ "uniform_hm", "pairings", "curve25519" ]
+uniform_hm = []
+js = [ "getrandom" ]
+curve25519 = [ "curve25519-dalek" ]
+pairings = [ "bls12_381", "pairing" ]
+nizkp = [ "elliptic-curve" ]
+
+[dependencies]
+bls12_381 = {version ="0.5", features=["experimental"], optional=true } 
+sha2 = "0.9"
+subtle = "2.4"
+pairing = { version = "0.20", optional=true }
+getrandom = { version = "0.2.3", features = [ "js"], optional=true }
+# rand = { version = "0.7.3", features = [ "std_rng" ] }
+rand = { version = "0.7.3" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+futures = "0.3"
+
+elliptic-curve = { version = "0.10", features = ["arithmetic"], optional=true }
+
+curve25519-dalek = { version = "3", optional = true }
+
+[dev-dependencies]
+rocket = { version="0.5.0-rc.1", features = ["tls", "json"] }
+reqwest = { version = "0.11", features = [ "json", "blocking" ] }
+tokio = { version = "1", features = ["full"] }
+qrcode = "0.12"
+image = "0.23"
+serialport = "4.0"
+
+structopt = "0.3"
+
+criterion = { version = "0.3", features = [ "html_reports" ] }
+
+k256 = { version = "0.9", features = [ "arithmetic", "sha256" ] }
+
+[[bench]]
+name = "benchmarks"
+harness = false
